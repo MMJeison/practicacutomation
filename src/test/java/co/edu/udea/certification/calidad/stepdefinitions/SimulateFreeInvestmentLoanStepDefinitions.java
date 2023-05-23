@@ -39,18 +39,17 @@ public class SimulateFreeInvestmentLoanStepDefinitions {
 
   @Given("I am in the Bancolombia Personas online page")
   public void iAmInTheBancolombiaPersonasOnlinePage() {
-    // person.can(BrowseTheWeb.with(driver));
     person.attemptsTo(Open.browserOn(userPage));
   }
 
   @When("I enter the credits section")
   public void iEnterTheCreditsSection() {
-    person.attemptsTo(GoToCreditsSection.browser(userPage));
+    person.attemptsTo(GoToCreditsSection.browser());
   }
 
   @And("I choose the simulate free investment credit option")
   public void iChooseTheSimulateFreeInvestmentCreditOption() {
-    person.attemptsTo(GoToSimulateCredit.browser(userPage));
+    person.attemptsTo(GoToSimulateCredit.browser());
   }
 
   @And("I enter all the requested information")
@@ -59,12 +58,11 @@ public class SimulateFreeInvestmentLoanStepDefinitions {
     String amount = String.valueOf((int) (Math.random() * 499000001 + 1000000));
     // seleccionamos un plazo aleatorio entre 48 y 84
     String term = String.valueOf((int) (Math.random() * 37 + 48));
-    person.attemptsTo(CompleteTheForm.browserWithTheData(userPage, amount, term));
+    person.attemptsTo(CompleteTheForm.browserWithTheData(amount, term));
   }
 
   @Then("I can see the different options for the free investment credit")
   public void iCanSeeTheDifferentOptionsForTheFreeInvestmentCredit() {
-    // person.should(seeThat(Validation.theOptionsCredits()));
     String message = "Te ofrecemos estas opciones para Crédito de Libre Inversión";
     person.should(seeThat(Validation.theOptionsCredits(message), equalTo(true)));
   }
