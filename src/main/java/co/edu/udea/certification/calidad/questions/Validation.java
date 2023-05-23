@@ -3,7 +3,6 @@ package co.edu.udea.certification.calidad.questions;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
-// import net.serenitybdd.screenplay.questions.Text;
 
 import static co.edu.udea.certification.calidad.userinterfaces.UserPage.TEXT_VALIDATION;
 
@@ -17,7 +16,6 @@ public class Validation implements Question<Boolean> {
 
   @Override
   public Boolean answeredBy(Actor actor) {
-    // return Text.of(TEXT_VALIDATION).viewedBy(actor).asString().equals(message);
     String aux = BrowseTheWeb.as(actor).find(TEXT_VALIDATION).getText();
     return aux.contains(message);
   }
